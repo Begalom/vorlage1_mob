@@ -1,0 +1,1092 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="VISION Facility Management - Ihr zuverlässiger Hausmeisterservice in Hamburg. 24/7 Notdienst, professionelle Objektbetreuung für Hausverwaltungen und WEGs." />
+    <title>VISION Facility Management - Hausmeisterservice Hamburg | 24/7 Notdienst</title>
+
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        img, svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        /* JS-Fallback bleibt trotzdem okay */
+
+        :root {
+            --primary-cyan: #4ECDC4;
+            --primary-blue: #45B7D1;
+            --dark-blue: #1e3a5f;
+            --darker-blue: #0f1e30;
+            --text-light: #f8f9fa;
+            --text-gray: #b8c5d6;
+            --container: 1400px;
+            --header-h: 78px;
+            --radius-lg: 20px;
+            --radius-xl: 30px;
+            --shadow: 0 20px 40px rgba(78, 205, 196, 0.2);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0a0f1a;
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Accessible focus */
+        :focus-visible {
+            outline: 2px solid var(--primary-cyan);
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 15, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(78, 205, 196, 0.1);
+        }
+
+        nav {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 1rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            min-height: var(--header-h);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            min-width: 0;
+        }
+
+        .logo-img {
+            width: 46px;
+            height: 46px;
+            flex: 0 0 auto;
+        }
+
+        .logo-text h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            white-space: nowrap;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+            .nav-links a {
+                color: var(--text-light);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.25s;
+                position: relative;
+                padding: 0.3rem 0;
+            }
+
+                .nav-links a::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -6px;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background: var(--primary-cyan);
+                    transition: width 0.25s;
+                }
+
+                .nav-links a:hover {
+                    color: var(--primary-cyan);
+                }
+
+                    .nav-links a:hover::after {
+                        width: 100%;
+                    }
+
+        .mobile-menu-btn {
+            display: none;
+            background: rgba(30, 58, 95, 0.35);
+            border: 1px solid rgba(78, 205, 196, 0.25);
+            color: var(--text-light);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.65rem 0.75rem;
+            border-radius: 12px;
+            line-height: 1;
+        }
+
+        /* Mobile menu panel */
+        .mobile-panel {
+            display: none;
+            border-top: 1px solid rgba(78, 205, 196, 0.1);
+            background: rgba(10, 15, 26, 0.98);
+            padding: 0.75rem 1.25rem 1.1rem;
+        }
+
+            .mobile-panel a {
+                display: block;
+                padding: 0.9rem 0.2rem;
+                color: var(--text-light);
+                text-decoration: none;
+                font-weight: 600;
+                border-bottom: 1px solid rgba(78, 205, 196, 0.12);
+            }
+
+                .mobile-panel a:last-child {
+                    border-bottom: none;
+                }
+
+        /* Offset for anchored sections (fixed header) */
+        section {
+            scroll-margin-top: calc(var(--header-h) + 16px);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100svh; /* better on mobile than 100vh */
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0a0f1a 0%, #1e3a5f 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: calc(var(--header-h) + 12px);
+            padding-bottom: 2.5rem;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(circle at 20% 50%, rgba(78, 205, 196, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(69, 183, 209, 0.1) 0%, transparent 50%);
+                pointer-events: none;
+            }
+
+        .hero-content {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: clamp(2.1rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1.25rem;
+            line-height: 1.08;
+        }
+
+            .hero h2 span {
+                background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+        .hero p {
+            font-size: clamp(1.05rem, 2.6vw, 1.3rem);
+            color: var(--text-gray);
+            max-width: 720px;
+            margin-bottom: 2.25rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: stretch;
+        }
+
+        .btn {
+            padding: 1rem 2.1rem;
+            border: none;
+            border-radius: 999px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s, background 0.25s, color 0.25s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-height: 48px; /* good tap target */
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
+            color: #0a0f1a;
+        }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+            }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--primary-cyan);
+        }
+
+            .btn-secondary:hover {
+                background: var(--primary-cyan);
+                color: #0a0f1a;
+            }
+
+        /* Sections */
+        section {
+            padding: 5rem 1.25rem;
+            max-width: var(--container);
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+            .section-header h2 {
+                font-size: clamp(1.9rem, 4vw, 3rem);
+                margin-bottom: 0.85rem;
+                background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                line-height: 1.15;
+            }
+
+            .section-header p {
+                color: var(--text-gray);
+                font-size: clamp(1rem, 2.3vw, 1.2rem);
+                max-width: 760px;
+                margin: 0 auto;
+            }
+
+        /* Grids */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .service-card {
+            background: rgba(30, 58, 95, 0.3);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 2.1rem;
+            transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+        }
+
+            .service-card:hover {
+                transform: translateY(-6px);
+                border-color: var(--primary-cyan);
+                box-shadow: var(--shadow);
+            }
+
+        .service-icon {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary-cyan);
+            line-height: 1.2;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 74px;
+            height: 74px;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin: 0 auto 1rem;
+            color: #0a0f1a;
+        }
+
+        .step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .step p {
+            color: var(--text-gray);
+        }
+
+        /* Emergency */
+        .emergency {
+            background: linear-gradient(135deg, #1e3a5f, #0f1e30);
+            border-radius: var(--radius-xl);
+            padding: 3.2rem 2rem;
+            text-align: center;
+            border: 2px solid var(--primary-cyan);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .emergency::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(78, 205, 196, 0.1) 0%, transparent 70%);
+                animation: pulse 4s ease-in-out infinite;
+                pointer-events: none;
+            }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .emergency-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .emergency h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .emergency .highlight {
+            color: var(--primary-cyan);
+            font-size: clamp(2.2rem, 6vw, 3rem);
+            font-weight: 900;
+        }
+
+        /* B2B */
+        .b2b-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+
+        .feature {
+            background: rgba(30, 58, 95, 0.2);
+            padding: 1.6rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-cyan);
+        }
+
+            .feature h3 {
+                color: var(--primary-cyan);
+                margin-bottom: 0.4rem;
+            }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(30, 58, 95, 0.3);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(78, 205, 196, 0.1);
+        }
+
+        .faq-question {
+            padding: 1.15rem 1.25rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            transition: background 0.25s;
+        }
+
+            .faq-question:hover {
+                background: rgba(78, 205, 196, 0.1);
+            }
+
+            .faq-question h3 {
+                font-size: 1.1rem;
+                color: var(--primary-cyan);
+                line-height: 1.2;
+            }
+
+        .faq-answer {
+            padding: 0 1.25rem 1.25rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.25rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-cyan);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1.2rem;
+            background: rgba(30, 58, 95, 0.3);
+            border-radius: 15px;
+            transition: transform 0.25s, background 0.25s;
+        }
+
+            .contact-method:hover {
+                background: rgba(78, 205, 196, 0.1);
+                transform: translateX(6px);
+            }
+
+        .contact-method-icon {
+            font-size: 1.8rem;
+        }
+
+        .contact-method a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .contact-form {
+            background: rgba(30, 58, 95, 0.3);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 0.45rem;
+                color: var(--primary-cyan);
+                font-weight: 700;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 1rem;
+                background: rgba(10, 15, 26, 0.5);
+                border: 1px solid rgba(78, 205, 196, 0.3);
+                border-radius: 12px;
+                color: var(--text-light);
+                font-size: 1rem;
+                transition: border-color 0.25s;
+            }
+
+                .form-group input:focus,
+                .form-group textarea:focus {
+                    outline: none;
+                    border-color: var(--primary-cyan);
+                }
+
+            .form-group textarea {
+                min-height: 150px;
+                resize: vertical;
+            }
+
+        /* Floating Emergency Button */
+        .floating-emergency {
+            position: fixed;
+            bottom: 18px;
+            right: 18px;
+            background: linear-gradient(135deg, #ff6b6b, #ff5252);
+            color: white;
+            padding: 0.95rem 1.2rem;
+            border-radius: 999px;
+            font-weight: 900;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(255, 82, 82, 0.4);
+            cursor: pointer;
+            z-index: 999;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-height: 48px;
+            max-width: calc(100vw - 36px);
+            white-space: nowrap;
+        }
+
+            .floating-emergency:hover {
+                box-shadow: 0 15px 40px rgba(255, 82, 82, 0.6);
+            }
+
+        /* Footer */
+        footer {
+            background: #0f1e30;
+            padding: 2.5rem 1.25rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(78, 205, 196, 0.2);
+        }
+
+            footer p {
+                color: var(--text-gray);
+            }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.7s ease;
+        }
+
+            .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mobile-panel.show {
+                display: block;
+            }
+
+            section {
+                padding: 4rem 1.1rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .emergency {
+                padding: 2.3rem 1.3rem;
+            }
+
+            .service-card {
+                padding: 1.7rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 0.85rem 1rem;
+            }
+
+            .logo-img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+
+            .logo-text p {
+                font-size: 0.7rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .floating-emergency {
+                left: 12px;
+                right: 12px; /* full width on small screens */
+                justify-content: center;
+                bottom: 12px;
+            }
+        }
+
+        /* Reduce motion */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .reveal {
+                transition: none;
+            }
+
+            .emergency::before {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo-container">
+                <svg class="logo-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#4ECDC4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#45B7D1;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="100" height="100" rx="20" fill="#1e3a5f" />
+                    <circle cx="50" cy="25" r="6" fill="url(#logoGradient)" />
+                    <rect x="35" y="40" width="15" height="15" rx="3" fill="#2d4a6f" />
+                    <rect x="55" y="40" width="15" height="15" rx="3" fill="#2d4a6f" />
+                    <rect x="35" y="60" width="15" height="15" rx="3" fill="#2d4a6f" />
+                    <rect x="55" y="60" width="15" height="15" rx="3" fill="#2d4a6f" />
+                    <path d="M 25,35 L 50,65 L 75,40" stroke="url(#logoGradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+                <div class="logo-text">
+                    <h1>VISION</h1>
+                    <p>Facility Management</p>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#start">Start</a></li>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#notdienst">Notdienst 24/7</a></li>
+                <li><a href="#hausverwaltungen">Für Hausverwaltungen</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+        </nav>
+
+        <div class="mobile-panel" id="mobileMenu">
+            <a href="#start">Start</a>
+            <a href="#leistungen">Leistungen</a>
+            <a href="#notdienst">Notdienst 24/7</a>
+            <a href="#hausverwaltungen">Für Hausverwaltungen</a>
+            <a href="#faq">FAQ</a>
+            <a href="#kontakt">Kontakt</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="start" class="hero">
+        <div class="hero-content reveal">
+            <h2>
+                <span>VISION</span> Facility Management<br />
+                Ihr Hausmeisterservice in Hamburg
+            </h2>
+            <p>
+                Professionelle Betreuung von Wohnimmobilien mit schneller Reaktion, klarer Dokumentation und persönlichem Service.
+                Wir entlasten Hausverwaltungen und sorgen für gepflegte, sichere Objekte.
+            </p>
+            <div class="cta-buttons">
+                <a href="tel:+4940XXXXXXXX" class="btn btn-primary">📞 Jetzt anrufen</a>
+                <a href="https://wa.me/49XXXXXXXXXX" class="btn btn-secondary">💬 WhatsApp</a>
+                <a href="#kontakt" class="btn btn-secondary">✉️ Angebot anfragen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="leistungen">
+        <div class="section-header reveal">
+            <h2>Unsere Leistungen</h2>
+            <p>Umfassende Betreuung für Ihre Wohnimmobilie – von der täglichen Pflege bis zum koordinierten Handwerkereinsatz</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">🔍</div>
+                <h3>Objektkontrollen & Rundgänge</h3>
+                <p>Regelmäßige Begehungen zur Früherkennung von Mängeln und Sicherstellung der Ordnung. Protokollierte Kontrollen mit Fotodokumentation.</p>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">🧹</div>
+                <h3>Treppenhaus & Gemeinschaftsflächen</h3>
+                <p>Reinigung und Pflege aller gemeinschaftlich genutzten Bereiche. Für ein sauberes, einladendes Wohnumfeld.</p>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">🔧</div>
+                <h3>Kleinreparaturen & Instandhaltung</h3>
+                <p>Schnelle Behebung kleinerer Schäden und Mängel. Von tropfenden Wasserhähnen bis zu defekten Leuchtmitteln.</p>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">🌳</div>
+                <h3>Außenanlagenpflege</h3>
+                <p>Grünflächenpflege, Rasenmähen, Heckenschnitt und Laubbeseitigung. Ihr Außenbereich in gepflegtem Zustand.</p>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">❄️</div>
+                <h3>Winterdienst</h3>
+                <p>Zuverlässige Schneeräumung und Streudienst. Verkehrssicherheit für Ihre Mieter und Besucher.</p>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-icon">🤝</div>
+                <h3>Koordination externer Fachfirmen</h3>
+                <p>Organisation und Überwachung von Handwerkern und Dienstleistern. Ihr zentraler Ansprechpartner vor Ort.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section>
+        <div class="section-header reveal">
+            <h2>So arbeiten wir</h2>
+            <p>Transparenter Ablauf für verlässliche Betreuung Ihrer Immobilie</p>
+        </div>
+
+        <div class="process-steps">
+            <div class="step reveal">
+                <div class="step-number">1</div>
+                <h3>Objektaufnahme</h3>
+                <p>Gemeinsame Begehung und Erfassung aller Besonderheiten Ihrer Immobilie</p>
+            </div>
+            <div class="step reveal">
+                <div class="step-number">2</div>
+                <h3>Fester Betreuungsplan</h3>
+                <p>Individuelle Vereinbarung von Leistungsumfang und Einsatzzeiten</p>
+            </div>
+            <div class="step reveal">
+                <div class="step-number">3</div>
+                <h3>Umsetzung & Erreichbarkeit</h3>
+                <p>Zuverlässige Durchführung aller Aufgaben mit ständiger Erreichbarkeit</p>
+            </div>
+            <div class="step reveal">
+                <div class="step-number">4</div>
+                <h3>Dokumentation & Rückmeldung</h3>
+                <p>Lückenlose Protokollierung und regelmäßiger Austausch mit der Verwaltung</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Section -->
+    <section id="notdienst">
+        <div class="emergency reveal">
+            <div class="emergency-content">
+                <div class="highlight">⚡ 24/7</div>
+                <h2>Notdienst rund um die Uhr</h2>
+                <p style="font-size: 1.1rem; margin: 1.6rem 0; color: var(--text-gray);">
+                    Wasserschaden, Heizungsausfall oder akute Störung? Wir sind immer für Sie erreichbar und reagieren schnell.
+                    Ihr Notfall ist unsere Priorität.
+                </p>
+                <div class="cta-buttons" style="justify-content: center;">
+                    <a href="tel:+4940XXXXXXXX" class="btn btn-primary">📞 Notfall-Hotline</a>
+                    <a href="https://wa.me/49XXXXXXXXXX" class="btn btn-secondary">💬 WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- B2B Section -->
+    <section id="hausverwaltungen">
+        <div class="section-header reveal">
+            <h2>Speziell für Hausverwaltungen</h2>
+            <p>Wir verstehen die Anforderungen professioneller Immobilienverwaltung</p>
+        </div>
+
+        <div class="b2b-features">
+            <div class="feature reveal">
+                <h3>✓ Fester Ansprechpartner</h3>
+                <p>Ein dedizierter Hausmeister für Ihr Objekt – kurze Wege, schnelle Kommunikation</p>
+            </div>
+            <div class="feature reveal">
+                <h3>✓ Entlastung der Verwaltung</h3>
+                <p>Wir kümmern uns um den Alltag vor Ort, Sie konzentrieren sich auf Ihre Kernaufgaben</p>
+            </div>
+            <div class="feature reveal">
+                <h3>✓ Transparente Kommunikation</h3>
+                <p>Regelmäßige Updates, klare Absprachen und proaktive Information bei Auffälligkeiten</p>
+            </div>
+            <div class="feature reveal">
+                <h3>✓ Dokumentierte Leistungen</h3>
+                <p>Alle Tätigkeiten werden digital erfasst und sind jederzeit nachvollziehbar</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="section-header reveal">
+            <h2>Häufige Fragen</h2>
+            <p>Transparente Antworten auf wichtige Fragen</p>
+        </div>
+
+        <div class="faq-list">
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <h3>Was zählt als Kleinreparatur?</h3>
+                    <span aria-hidden="true">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Kleinreparaturen sind übliche, einfache Instandsetzungsarbeiten wie der Austausch defekter Leuchtmittel,
+                    die Reparatur tropfender Wasserhähne, die Behebung kleinerer Verstopfungen oder die Beseitigung loser Türgriffe.
+                    Größere Reparaturen koordinieren wir gerne mit Fachbetrieben.
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <h3>Wie schnell reagieren Sie auf Anfragen?</h3>
+                    <span aria-hidden="true">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Bei Notfällen sind wir innerhalb kürzester Zeit vor Ort. Reguläre Anfragen bearbeiten wir in der Regel innerhalb
+                    von 24 Stunden. Termine für planbare Arbeiten stimmen wir flexibel nach Ihren Wünschen ab.
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <h3>Gibt es Pauschalangebote?</h3>
+                    <span aria-hidden="true">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Ja, wir bieten individuelle Betreuungspakete als monatliche Pauschale an. Diese umfassen regelmäßige Leistungen
+                    wie Objektkontrollen, Reinigung und Kleinreparaturen. Zusatzleistungen werden transparent nach Aufwand abgerechnet.
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <h3>Können Mieter Sie direkt kontaktieren?</h3>
+                    <span aria-hidden="true">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Das vereinbaren wir individuell mit der Verwaltung. Wir können sowohl als direkter Ansprechpartner für Mieter fungieren
+                    als auch ausschließlich über die Hausverwaltung kommunizieren – ganz nach Ihren Vorgaben.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt">
+        <div class="section-header reveal">
+            <h2>Kontaktieren Sie uns</h2>
+            <p>Wir freuen uns auf Ihre Anfrage</p>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info reveal">
+                <h3>Direkte Kontaktmöglichkeiten</h3>
+
+                <div class="contact-method">
+                    <div class="contact-method-icon">📞</div>
+                    <div>
+                        <strong>Telefon</strong><br />
+                        <a href="tel:+4940XXXXXXXX">+49 40 XXXX XXXX</a>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-method-icon">💬</div>
+                    <div>
+                        <strong>WhatsApp</strong><br />
+                        <a href="https://wa.me/49XXXXXXXXXX">Direkt chatten</a>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-method-icon">✉️</div>
+                    <div>
+                        <strong>E-Mail</strong><br />
+                        <a href="mailto:info@vision-fm.de">info@vision-fm.de</a>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-method-icon">⚡</div>
+                    <div>
+                        <strong style="color: #ff6b6b;">24/7 Notdienst</strong><br />
+                        <a href="tel:+4940XXXXXXXX" style="color: #ff6b6b;">Immer erreichbar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form reveal">
+                <h3 style="margin-bottom: 1.2rem; color: var(--primary-cyan);">Anfrage senden</h3>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name / Firma</label>
+                        <input type="text" id="name" name="name" required autocomplete="name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">Telefon oder E-Mail</label>
+                        <input type="text" id="contact" name="contact" required autocomplete="email" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Ihre Nachricht</label>
+                        <textarea id="message" name="message" required placeholder="Beschreiben Sie kurz Ihr Anliegen oder Ihre Immobilie..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Anfrage absenden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Emergency Button -->
+    <a href="tel:+4940XXXXXXXX" class="floating-emergency">🚨 24/7 Notdienst</a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 VISION Facility Management Hamburg | Hausmeisterservice & Objektbetreuung</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Impressum | Datenschutz | AGB</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('show');
+            menuBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('show');
+            menuBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', () => closeMobileMenu());
+        });
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMobileMenu();
+        });
+
+        // Scroll reveal with IntersectionObserver (better for mobile performance)
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        } else {
+            // Fallback: show immediately
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        }
+
+        // Smooth scroll JS only for older browsers (CSS already does it)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                const target = document.querySelector(href);
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+            });
+        });
+
+        // Form submission (demo)
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Anfrage! Wir melden uns schnellstmöglich bei Ihnen.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
